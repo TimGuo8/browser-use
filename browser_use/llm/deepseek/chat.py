@@ -72,7 +72,8 @@ class ChatDeepSeek(BaseChatModel):
 		return self.model
 
 	def _supports_thinking(self) -> bool:
-		return 'deepseek-v4' in self.model.lower()
+		model = self.model.lower()
+		return model == 'deepseek-flash' or 'deepseek-v4' in model
 
 	def _request_kwargs(self) -> dict[str, Any]:
 		common: dict[str, Any] = {}
